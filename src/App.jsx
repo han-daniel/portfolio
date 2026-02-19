@@ -428,7 +428,7 @@ function Nav() {
           Email
         </a>
         <a
-          href="https://linkedin.com/in/"
+          href="https://www.linkedin.com/in/danielhan0/"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -869,7 +869,7 @@ function Resume() {
           </p>
         </div>
         <a
-          href="resume.pdf"
+          href="Resume_Daniel_Han.pdf"
           style={{
             fontFamily: "'IBM Plex Mono', monospace",
             fontSize: "11px",
