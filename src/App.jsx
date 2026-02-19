@@ -40,6 +40,15 @@ const PROJECTS = [
     pdf: "DL_final_paper.pdf",
     image: "img-depth.png",
   },
+  {
+    title: "NarrativeNet",
+    venue: "Personal Project",
+    description:
+      "A Flask web application for text analysis and visualization of movie and series synopses. Extracts characters and relationships from narratives, visualizes them as dynamic network graphs, and computes centrality scores (betweenness, eigenvector, etc.) to quantify character importance. Supports CSV and JSON export for further analysis.",
+    tags: ["Flask", "NLP", "Network Analysis", "Visualization"],
+    github: "https://github.com/han-daniel/NarrativeNet",
+    demo: "https://narrative-net-8d9c8f56d50d.herokuapp.com",
+  },
 ];
 
 /* ─── Brain Point Cloud ─── */
@@ -686,6 +695,8 @@ function ProjectCard({ project, index }) {
             project.pdfs.map((p) => (
               <PdfLink key={p.file} label={p.label} file={p.file} />
             ))}
+          {project.github && <PdfLink label="GitHub" file={project.github} />}
+          {project.demo && <PdfLink label="Demo" file={project.demo} />}
         </div>
       </div>
     </div>
