@@ -363,14 +363,14 @@ function ParticleCanvas() {
   const animFrameRef = useRef(null);
 
   const initParticles = useCallback((width, height) => {
-    const count = Math.floor((width * height) / 2800);
-    return Array.from({ length: Math.min(count, 350) }, () => ({
+    const count = Math.floor((width * height) / 1200);
+    return Array.from({ length: Math.min(count, 800) }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      radius: Math.random() * 1.8 + 0.5,
-      opacity: Math.random() * 0.35 + 0.08,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      radius: Math.random() * 2.0 + 0.6,
+      opacity: Math.random() * 0.4 + 0.1,
     }));
   }, []);
 
@@ -415,18 +415,41 @@ function ParticleCanvas() {
         ctx.fillStyle = `rgba(130, 155, 170, ${p.opacity})`;
         ctx.fill();
       });
+      // Spatial grid for O(n) connection checks
+      const CD = 120;
+      const grid = {};
       for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(130, 155, 170, ${0.07 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+        const gx = Math.floor(particles[i].x / CD);
+        const gy = Math.floor(particles[i].y / CD);
+        const key = gx + "," + gy;
+        if (!grid[key]) grid[key] = [];
+        grid[key].push(i);
+      }
+      const checked = new Set();
+      for (let i = 0; i < particles.length; i++) {
+        const gx = Math.floor(particles[i].x / CD);
+        const gy = Math.floor(particles[i].y / CD);
+        for (let dx = -1; dx <= 1; dx++) {
+          for (let dy = -1; dy <= 1; dy++) {
+            const cell = grid[(gx + dx) + "," + (gy + dy)];
+            if (!cell) continue;
+            for (const j of cell) {
+              if (j <= i) continue;
+              const pk = i < j ? i * 100000 + j : j * 100000 + i;
+              if (checked.has(pk)) continue;
+              checked.add(pk);
+              const ddx = particles[i].x - particles[j].x;
+              const ddy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(ddx * ddx + ddy * ddy);
+              if (dist < CD) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(130, 155, 170, ${0.09 * (1 - dist / CD)})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
           }
         }
       }
