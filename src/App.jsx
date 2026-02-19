@@ -363,8 +363,8 @@ function ParticleCanvas() {
   const animFrameRef = useRef(null);
 
   const initParticles = useCallback((width, height) => {
-    const count = Math.floor((width * height) / 5000);
-    return Array.from({ length: Math.min(count, 200) }, () => ({
+    const count = Math.floor((width * height) / 2800);
+    return Array.from({ length: Math.min(count, 350) }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.25,
@@ -1000,8 +1000,8 @@ function Resume() {
     <section
       id="resume"
       style={{
-        padding: "80px 48px 100px",
-        maxWidth: "760px",
+        padding: "80px 0 100px",
+        maxWidth: "920px",
         margin: "0 auto",
         position: "relative",
         zIndex: 1,
@@ -1009,228 +1009,246 @@ function Resume() {
     >
       <div
         style={{
-          marginBottom: "36px",
+          backgroundColor: "rgba(20, 20, 20, 0.92)",
+          borderRadius: "16px",
+          padding: "48px",
           display: "flex",
-          alignItems: "center",
-          gap: "20px",
+          gap: "40px",
+          alignItems: "flex-start",
         }}
       >
-        <div>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              color: "#bbb",
-              marginBottom: "6px",
-            }}
-          >
-            03
-          </p>
-          <h2
-            style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "30px",
-              fontWeight: 400,
-              color: "#1a1a1a",
-              margin: 0,
-            }}
-          >
-            Resume
-          </h2>
+        {/* Left: Resume content */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ marginBottom: "36px" }}>
+            <p
+              style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                color: "rgba(255,255,255,0.35)",
+                marginBottom: "6px",
+              }}
+            >
+              03
+            </p>
+            <h2
+              style={{
+                fontFamily: "'DM Serif Display', Georgia, serif",
+                fontSize: "30px",
+                fontWeight: 400,
+                color: "#f0ede8",
+                margin: 0,
+              }}
+            >
+              Resume
+            </h2>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+            <div>
+              <p
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.35)",
+                  marginBottom: "6px",
+                }}
+              >
+                Education
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Source Serif 4', Georgia, serif",
+                  fontSize: "16px",
+                  color: "rgba(255,255,255,0.85)",
+                  margin: "0 0 3px 0",
+                }}
+              >
+                MSE Data Science — Johns Hopkins University
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Source Serif 4', Georgia, serif",
+                  fontSize: "16px",
+                  color: "rgba(255,255,255,0.85)",
+                  margin: 0,
+                }}
+              >
+                BA Mathematics — Vanderbilt University
+              </p>
+              <p
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: "10px",
+                  color: "rgba(255,255,255,0.4)",
+                  marginTop: "4px",
+                }}
+              >
+                Minors in Data Science, Psychology, Scientific Computing
+              </p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.35)",
+                  marginBottom: "6px",
+                }}
+              >
+                Experience
+              </p>
+              <div style={{ marginBottom: "12px" }}>
+                <p
+                  style={{
+                    fontFamily: "'Source Serif 4', Georgia, serif",
+                    fontSize: "16px",
+                    color: "rgba(255,255,255,0.85)",
+                    margin: "0 0 2px 0",
+                  }}
+                >
+                  Analytics Co-Lead — Johns Hopkins Center for Talented Youth (CTY)
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontSize: "10px",
+                    color: "rgba(255,255,255,0.4)",
+                    margin: 0,
+                  }}
+                >
+                  Jan 2025 – Present
+                </p>
+              </div>
+              <div style={{ marginBottom: "12px" }}>
+                <p
+                  style={{
+                    fontFamily: "'Source Serif 4', Georgia, serif",
+                    fontSize: "16px",
+                    color: "rgba(255,255,255,0.85)",
+                    margin: "0 0 2px 0",
+                  }}
+                >
+                  Graduate Researcher — Center for Language and Speech Processing
+                  (CLSP)
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontSize: "10px",
+                    color: "rgba(255,255,255,0.4)",
+                    margin: 0,
+                  }}
+                >
+                  Oct 2024 – Feb 2025
+                </p>
+              </div>
+              <div>
+                <p
+                  style={{
+                    fontFamily: "'Source Serif 4', Georgia, serif",
+                    fontSize: "16px",
+                    color: "rgba(255,255,255,0.85)",
+                    margin: "0 0 2px 0",
+                  }}
+                >
+                  Vice President of Programming — Vanderbilt Asian Pre-Professional
+                  Society (VAPS)
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontSize: "10px",
+                    color: "rgba(255,255,255,0.4)",
+                    margin: 0,
+                  }}
+                >
+                  Jan 2022 – Jun 2023
+                </p>
+              </div>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.35)",
+                  marginBottom: "6px",
+                }}
+              >
+                Skills
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Source Serif 4', Georgia, serif",
+                  fontSize: "14px",
+                  color: "rgba(255,255,255,0.55)",
+                  lineHeight: 1.7,
+                  margin: 0,
+                }}
+              >
+                Python, SQL, Pandas, NumPy, scikit-learn, PyTorch, statistics,
+                regression, clustering, hypothesis testing, Bayesian modeling, data
+                visualization, pipeline design
+              </p>
+            </div>
+            <a
+              href="Resume_Daniel_Han.pdf"
+              style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: "11px",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#f0ede8",
+                textDecoration: "none",
+                padding: "10px 24px",
+                border: "1px solid rgba(255,255,255,0.3)",
+                alignSelf: "flex-start",
+                transition: "all 0.3s",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#f0ede8";
+                e.target.style.color = "#1a1a1a";
+                e.target.style.borderColor = "#f0ede8";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "transparent";
+                e.target.style.color = "#f0ede8";
+                e.target.style.borderColor = "rgba(255,255,255,0.3)";
+              }}
+            >
+              Download PDF
+            </a>
+          </div>
         </div>
-        <img
-          src="headshot.jpeg"
-          alt="Daniel Han"
+        {/* Right: Headshot, side-by-side like Hero/BrainPointCloud */}
+        <div
           style={{
-            width: "64px",
-            height: "64px",
-            borderRadius: "50%",
-            objectFit: "cover",
-            border: "1px solid rgba(0,0,0,0.06)",
-          }}
-        />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-        <div>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#bbb",
-              marginBottom: "6px",
-            }}
-          >
-            Education
-          </p>
-          <p
-            style={{
-              fontFamily: "'Source Serif 4', Georgia, serif",
-              fontSize: "16px",
-              color: "#333",
-              margin: "0 0 3px 0",
-            }}
-          >
-            MSE Data Science — Johns Hopkins University
-          </p>
-          <p
-            style={{
-              fontFamily: "'Source Serif 4', Georgia, serif",
-              fontSize: "16px",
-              color: "#333",
-              margin: 0,
-            }}
-          >
-            BA Mathematics — Vanderbilt University
-          </p>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: "10px",
-              color: "#aaa",
-              marginTop: "4px",
-            }}
-          >
-            Minors in Data Science, Psychology, Scientific Computing
-          </p>
-        </div>
-        <div>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#bbb",
-              marginBottom: "6px",
-            }}
-          >
-            Experience
-          </p>
-          <div style={{ marginBottom: "12px" }}>
-            <p
-              style={{
-                fontFamily: "'Source Serif 4', Georgia, serif",
-                fontSize: "16px",
-                color: "#333",
-                margin: "0 0 2px 0",
-              }}
-            >
-              Analytics Co-Lead — Johns Hopkins Center for Talented Youth (CTY)
-            </p>
-            <p
-              style={{
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: "10px",
-                color: "#aaa",
-                margin: 0,
-              }}
-            >
-              Jan 2025 – Present
-            </p>
-          </div>
-          <div style={{ marginBottom: "12px" }}>
-            <p
-              style={{
-                fontFamily: "'Source Serif 4', Georgia, serif",
-                fontSize: "16px",
-                color: "#333",
-                margin: "0 0 2px 0",
-              }}
-            >
-              Graduate Researcher — Center for Language and Speech Processing
-              (CLSP)
-            </p>
-            <p
-              style={{
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: "10px",
-                color: "#aaa",
-                margin: 0,
-              }}
-            >
-              Oct 2024 – Feb 2025
-            </p>
-          </div>
-          <div>
-            <p
-              style={{
-                fontFamily: "'Source Serif 4', Georgia, serif",
-                fontSize: "16px",
-                color: "#333",
-                margin: "0 0 2px 0",
-              }}
-            >
-              Vice President of Programming — Vanderbilt Asian Pre-Professional
-              Society (VAPS)
-            </p>
-            <p
-              style={{
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: "10px",
-                color: "#aaa",
-                margin: 0,
-              }}
-            >
-              Jan 2022 – Jun 2023
-            </p>
-          </div>
-        </div>
-        <div>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#bbb",
-              marginBottom: "6px",
-            }}
-          >
-            Skills
-          </p>
-          <p
-            style={{
-              fontFamily: "'Source Serif 4', Georgia, serif",
-              fontSize: "14px",
-              color: "#666",
-              lineHeight: 1.7,
-              margin: 0,
-            }}
-          >
-            Python, SQL, Pandas, NumPy, scikit-learn, PyTorch, statistics,
-            regression, clustering, hypothesis testing, Bayesian modeling, data
-            visualization, pipeline design
-          </p>
-        </div>
-        <a
-          href="Resume_Daniel_Han.pdf"
-          style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: "11px",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: "#1a1a1a",
-            textDecoration: "none",
-            padding: "10px 24px",
-            border: "1px solid #1a1a1a",
-            alignSelf: "flex-start",
-            transition: "all 0.3s",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#1a1a1a";
-            e.target.style.color = "#faf9f7";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "transparent";
-            e.target.style.color = "#1a1a1a";
+            flex: "0 0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: "60px",
           }}
         >
-          Download PDF
-        </a>
+          <img
+            src="headshot.jpeg"
+            alt="Daniel Han"
+            style={{
+              width: "200px",
+              height: "200px",
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "2px solid rgba(255,255,255,0.1)",
+            }}
+          />
+        </div>
       </div>
     </section>
   );
